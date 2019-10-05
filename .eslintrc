@@ -26,7 +26,8 @@
     ],
     "@typescript-eslint/explicit-function-return-type": "off",
     "import/no-extraneous-dependencies": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   },
   "settings": {
     "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
