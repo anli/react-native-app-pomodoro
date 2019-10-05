@@ -3,12 +3,25 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "lint": "eslint \"**/*.ts*\"",
+    "prettier:write": "npx prettier --write \"**/*.{js,jsx,ts,tsx,json}\"",
     "ios": "react-native run-ios --simulator=\"iPhone 11\"",
     "android": "emulator @default; react-native run-android",
     "start": "react-native start",
     "test": "jest"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && npm run lint && npm run test"
+    }
+  },
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.3.2",
+    "@typescript-eslint/parser": "^2.3.2",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-jest": "^22.17.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react-native": "^3.7.0",
     "react": "16.9.0",
     "react-native": "0.61.2"
   },
@@ -21,8 +34,17 @@
     "@types/react-native": "^0.60.17",
     "@types/react-test-renderer": "16.9.0",
     "babel-jest": "^24.9.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "husky": "^3.0.8",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1",
     "react-test-renderer": "16.9.0",
     "typescript": "^3.6.3"
   },
