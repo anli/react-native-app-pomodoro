@@ -2,6 +2,10 @@ import moment from 'moment';
 import React, { useState } from 'react';
 import { Button } from 'react-native-paper';
 import styled from 'styled-components/native';
+import {
+  cancelLocalNotificationSchedule,
+  localNotificationSchedule,
+} from '../../utils/Notification';
 
 const getCountdownTime = (
   startTime: string,
@@ -73,14 +77,17 @@ export const CountdownScreen = () => {
   };
 
   const onStartWork = () => {
+    localNotificationSchedule('Work Ended', SECONDS.WORK);
     onStart(SECONDS.WORK, STATUS.WORK_RUNNING, STATUS.WORK_FINISH, TIME.BREAK);
   };
 
   const onEndWork = (interval: any) => {
+    cancelLocalNotificationSchedule();
     onEnd(interval, STATUS.WORK_FINISH, TIME.BREAK);
   };
 
   const onStartBreak = () => {
+    localNotificationSchedule('Break Ended', SECONDS.BREAK);
     onStart(
       SECONDS.BREAK,
       STATUS.BREAK_RUNNING,
@@ -90,6 +97,7 @@ export const CountdownScreen = () => {
   };
 
   const onEndBreak = (interval: any) => {
+    cancelLocalNotificationSchedule();
     onEnd(interval, STATUS.BREAK_FINISH, TIME.WORK);
   };
 
